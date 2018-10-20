@@ -57,10 +57,9 @@ int main(int argc, char **argv) {
 	//A_star(BasicMap::randomMap(25, 25, 0.3f, 1), 1, 1, 23, 23);
 	system("PAUSE");
 }
-
 void A_star(BasicMap map, int start_x, int start_y, int end_x, int end_y) {
 	ScoreCell *scoreCells = new ScoreCell[map.size()];
-	for (int i = 0; i < map.size(); ++i) { // init
+	for (int i = 0; i < map.size(); ++i) {
 		scoreCells[i].i = i;
 	}
 	vector<ScoreCell> openlist = vector<ScoreCell>();
@@ -86,10 +85,13 @@ void A_star(BasicMap map, int start_x, int start_y, int end_x, int end_y) {
 	map.printMap();
 	delete[] scoreCells;
 }
-
 void add(BasicMap &map, vector<ScoreCell> &openlist, ScoreCell *cells,
 	int now_i, int next_i, int end_x, int end_y) {
 
+	// int max_i = height * width;
+	// if(next_i < 0 || next_i >= max_i) {
+	//     return;
+	// }
 	if (cells[next_i].pre_index != -1)
 		return;
 
